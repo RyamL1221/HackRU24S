@@ -18,12 +18,6 @@ body {
     border-color: #9d0229;
 }
 
-/*.contrail-one-regular {
-    font-family: "Contrail One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-*/
 
 .jrm {
     font-size: 25px;
@@ -83,15 +77,15 @@ body {
 }
 
 #active {
-    
+
 }
 
 #completed {
-   
+
 }
 
 #all {
-    
+
 }
 
 .filters {

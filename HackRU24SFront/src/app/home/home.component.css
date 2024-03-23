@@ -1,0 +1,25 @@
+body {
+  background-color: #E7EBEE;
+}
+.title {
+  border-style: outset;
+  border-width: 5px;
+  margin: auto;
+  width: 75%;
+  background-color: #CC0033 ;
+  padding: 10px;
+  padding-top: 1.25em;
+  font-family: "Karma", serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  border-color: #9d0229;
+}
+.melania {
+  min-width: 100%;
+}
+.jrm {
+  font-size: 25px;
+  text-align: left;
+  color: #9d0229;
+}
