@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+.title {
+    border-style: outset;
+    border-width: 5px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 60px;
+}
+
+.jrm {
+    font-size: 30px;
+    text-align: left;
+}
+
+.todo {
+    display: inline;
+    width: 300px;
+}
+
+.tasks-table {
+    border-width: 5px;
+    width: 50%;
+    margin: auto;
+    border-style: solid;
+    margin-top: 10px;
+}
+
+.task-border {
+    border-width: 2px;
+    border-style: solid;
+}
