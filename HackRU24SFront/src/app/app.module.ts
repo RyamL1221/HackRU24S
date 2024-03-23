@@ -7,6 +7,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { HomeComponent } from './home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
