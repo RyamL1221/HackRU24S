@@ -61,7 +61,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 15%;
     border-style: inset;
     border-radius: 4px;
     background-color: #ffffff;
@@ -95,7 +95,7 @@ body {
 }
 
 .filters {
-    width: 75%;
+    width: 100%;
     margin: auto;
 }
 

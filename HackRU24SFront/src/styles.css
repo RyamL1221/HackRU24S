@@ -185,4 +185,8 @@ body {
 
 .task {
     background-color: white;
+    font-family: "Karma", serif;
+    font-weight: 500;
+    font-style: normal;
+    padding-top: .4em;
 }
