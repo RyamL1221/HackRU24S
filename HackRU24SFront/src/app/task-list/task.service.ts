@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Task } from "./task";
 
+
 @Injectable({providedIn: 'root'})
 export class TaskService {
     private apiServerUrl = environment.apiBaseUrl;
@@ -26,3 +27,7 @@ export class TaskService {
         return this.http.delete<void>(`${this.apiServerUrl}/task/delete/${taskId}`);
     }
 }
+
+/**
+ * @title Configurable checkbox
+ */
