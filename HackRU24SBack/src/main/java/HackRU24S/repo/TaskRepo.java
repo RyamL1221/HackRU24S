@@ -12,6 +12,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface TaskRepo extends MongoRepository<Task, Long>{
     
     Optional<Task> findTaskById(Long id);
-    void deleteTaskById();
-    
+    void deleteTaskById(Long id);
+
 }
