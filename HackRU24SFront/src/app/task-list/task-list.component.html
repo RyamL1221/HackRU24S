@@ -27,12 +27,17 @@
       </div>
       <table class="tasks-table mt-3">
         <tr class="task">
-          <td class="px-2 pt-1 task-border check"><img class="checkmark" src="https://static.vecteezy.com/system/resources/previews/018/251/138/original/check-mark-symbol-on-transparent-background-free-png.png" alt="check"></td>
-          <td class="px-2 pt-1 task-border time">time</td>
-          <td class="px-2 pt-1 task-border text">title</td>
+          <td class="px-2 pt-1 task-border check">
+            <section class="example-section">
+              <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+              <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+            </section>
+            <img class="checkmark" src="https://static.vecteezy.com/system/resources/previews/018/251/138/original/check-mark-symbol-on-transparent-background-free-png.png" alt="check"></td>
+          <td class="px-2 pt-1 task-border time"><b>time</b></td>
+          <td class="px-2 pt-1 task-border text"><b>title</b></td>
           <td class="px-2 pt-1 task-border description">descript</td>
-          <td class="task-border edit px-2 pt-1">edit✎</td>
-          <td class="task-border delete px-2 pt-1">delete✘</td>
+          <td class="task-border edit px-2 pt-1"><b>edit✎</b></td>
+          <td class="task-border delete px-2 pt-1"><b>delete✘</b></td>
         </tr>
       </table>
     </div>
