@@ -107,6 +107,16 @@ body {
 
 .description {
     width: 10%;
+    background-color: rgb(189, 189, 180);
+}
+
+.description:hover {
+    background-color: rgb(167, 167, 160);
+    cursor: pointer;
+}
+
+.description:active {
+    background-color: rgb(143, 143, 137);
 }
 
 .edit {
