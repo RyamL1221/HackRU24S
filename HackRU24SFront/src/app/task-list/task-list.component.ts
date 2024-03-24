@@ -22,6 +22,7 @@ export class TaskListComponent implements OnInit{
   public completeTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public display: string = 'all';
   public allAllTasks: Task[][] = [this.allTasks, this.completedTasks, this.activeTasks];
+  public description: String = '';
 
   constructor(private taskService: TaskService) {}
 
@@ -134,5 +135,9 @@ export class TaskListComponent implements OnInit{
         default:
           return -1;
       }
+  }
+
+  public setDescription(description: String): void {
+    this.description = description;
   }
 }
