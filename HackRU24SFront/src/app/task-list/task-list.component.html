@@ -41,8 +41,8 @@
             <td class="px-2 pt-1 task-border time"><b>{{task?.time}}</b></td>
             <td class="px-2 pt-1 task-border text"><b>{{task?.name}}</b></td>
             <td class="px-2 pt-1 task-border description">{{task?.description}}</td>
-            <td class="task-border edit px-2 pt-1" (click)="onOpenEditModal(task)" (click)="onEditTask(task)"><b>edit✎</b></td>
-            <td class="task-border delete px-2 pt-1"><b>delete✘</b></td>
+            <td class="task-border edit px-2 pt-1" (click)="onOpenEditModal(task)" data-bs-toggle="modal" data-bs-target="#editTaskModal"><b >edit✎</b></td>
+            <td class="task-border delete px-2 pt-1" (click)="onOpenDeleteModal(task)" data-bs-toggle="modal" data-bs-target="#deleteTaskModal"><b>delete✘</b></td>
         </tr>
       </table>
     </div>
@@ -89,6 +89,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form #editForm="ngForm" (ngSubmit)="onEditTask(editTask)">
+                <input type="hidden" class="form-control" name="id" [(ngModel)]="editTask.id">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Name</label>
@@ -100,12 +101,30 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Time</label>
-                        <input class="form-control" name="time" required [(ngModel)]="editTask.time">
+                        <input class="form-control" name="time" [(ngModel)]="editTask.time">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" id="add-task-form" [disabled]="editForm.invalid" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                    <button type="submit" id="edit-task-form" [disabled]="editForm.invalid" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </form>              
+        </div>
+    </div>
+</div>
+
+<!-- Delete Task Modal-->
+<div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to delete {{deleteTask.name}} Task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form #editForm="ngForm" (ngSubmit)="onDeleteTask(deleteTask)">
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="delete-task-form" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
                 </div>
             </form>              
         </div>

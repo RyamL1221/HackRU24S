@@ -13,8 +13,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 export class TaskListComponent implements OnInit{
 
   public allTasks: Task[] = [];
-  public addTask: Task = {name: "", description: "", time: ""};
-  public editTask: Task = {name: "", description: "", time: ""};
+  public addTask: Task = {id: "", name: "", description: "", time: ""};
+  public editTask: Task = {id: "", name: "", description: "", time: ""};
+  public deleteTask: Task = {id: "", name: "", description: "", time: ""};
 
   constructor(private taskService: TaskService) {}
 
@@ -47,9 +48,13 @@ export class TaskListComponent implements OnInit{
     )
   }
 
-  public onOpenEditModal(task: Task) {
-    this.editTask = task;
+  public onOpenEditModal(task: Task): void { 
+    this.editTask.id = task.id;
+    this.editTask.name = task.name;
+    this.editTask.description = task.description;
+    this.editTask.time = task.time;
   }
+
   public onEditTask(task: Task): void {
     this.taskService.editTask(task).subscribe(
       (response: Task) => {
@@ -62,4 +67,22 @@ export class TaskListComponent implements OnInit{
     );
   }
 
+  public onOpenDeleteModal(task: Task): void {
+    this.deleteTask.id = task.id;
+    this.deleteTask.name = task.name;
+    this.deleteTask.description = task.description;
+    this.deleteTask.time = task.time;
+  }
+
+  public onDeleteTask(task: Task): void {
+    this.taskService.deleteTask(task.id).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getTasks();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 }

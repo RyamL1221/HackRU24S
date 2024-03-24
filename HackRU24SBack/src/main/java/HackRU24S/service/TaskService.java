@@ -33,12 +33,12 @@ public class TaskService {
         return taskRepo.save(task);
     }
 
-    public Task findTaskById(Long id) {
+    public Task findTaskById(String id) {
         return taskRepo.findTaskById(id)
             .orElseThrow(() -> new TaskNotFoundException());
     }
 
-    public void deleteTask(Long id) {
+    public void deleteTask(String id) {
         taskRepo.deleteTaskById(id);
     }
 }
