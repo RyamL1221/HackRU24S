@@ -4,6 +4,7 @@ import { Task } from './task';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule, NgForm } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-list',
@@ -13,9 +14,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 export class TaskListComponent implements OnInit{
 
   public allTasks: Task[] = [];
-  public addTask: Task = {id: "", name: "", description: "", time: ""};
-  public editTask: Task = {id: "", name: "", description: "", time: ""};
-  public deleteTask: Task = {id: "", name: "", description: "", time: ""};
+  public addTask: Task = {id: "", name: "", description: "", time: "", completed: false};
+  public editTask: Task = {id: "", name: "", description: "", time: "", completed: false};
+  public deleteTask: Task = {id: "", name: "", description: "", time: "", completed: false};
+  public completeTask: Task = {id: "", name: "", description: "", time: "", completed: false};
 
   constructor(private taskService: TaskService) {}
 
@@ -53,6 +55,7 @@ export class TaskListComponent implements OnInit{
     this.editTask.name = task.name;
     this.editTask.description = task.description;
     this.editTask.time = task.time;
+    this.editTask.completed = task.completed;
   }
 
   public onEditTask(task: Task): void {
@@ -72,6 +75,7 @@ export class TaskListComponent implements OnInit{
     this.deleteTask.name = task.name;
     this.deleteTask.description = task.description;
     this.deleteTask.time = task.time;
+    this.deleteTask.completed = task.completed;
   }
 
   public onDeleteTask(task: Task): void {
@@ -84,5 +88,14 @@ export class TaskListComponent implements OnInit{
         alert(error.message);
       }
     );
+  }
+
+  public completeSwitch(task: Task): void {
+    this.completeTask.id = task.id;
+    this.completeTask.name = task.name;
+    this.completeTask.description = task.description;
+    this.completeTask.time = task.time;
+    this.completeTask.completed = !task.completed;
+    this.onEditTask(this.completeTask);
   }
 }

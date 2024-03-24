@@ -16,13 +16,15 @@ public class Task implements Serializable{
     private String name;
     private String description;
     private String time;
+    private boolean completed;
     
     public Task() {}
 
-    public Task(String name, String description, String time) {
+    public Task(String name, String description, String time, boolean completed) {
         this.name = name;
         this.description = description;
         this.time = time;
+        this.completed = completed;
     }
 
     public String getId() {
@@ -57,7 +59,14 @@ public class Task implements Serializable{
         this.time = time;
     }
 
+    public boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
     public String toString() {
-        return "Id: " + id + " Name: " + name + " Description: " + description;
+        return "Id: " + id + " Name: " + name + " Description: " + description + "Time: " + time + "Completed " + completed;
     }
 }

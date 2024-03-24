@@ -37,7 +37,10 @@
         </tr>
         <tr class="task" *ngFor="let task of allTasks">
             <td class="px-2 pt-1 task-border check">
-                <mat-checkbox></mat-checkbox>
+                <mat-checkbox *ngIf="!task.completed" (click)="completeSwitch(task)"></mat-checkbox>
+                <div *ngIf="task.completed" style="text-align: center;" (click)="completeSwitch(task)">
+                    <img src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png" style="height: 20px; width: 20px;">
+                </div>
             <td class="px-2 pt-1 task-border time"><b>{{task?.time}}</b></td>
             <td class="px-2 pt-1 task-border text"><b>{{task?.name}}</b></td>
             <td class="px-2 pt-1 task-border description">{{task?.description}}</td>
