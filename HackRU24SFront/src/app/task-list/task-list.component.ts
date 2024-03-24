@@ -3,13 +3,11 @@ import { TaskService } from './task.service';
 import { Task } from './task';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule, NgForm } from '@angular/forms';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit{
 
@@ -21,6 +19,8 @@ export class TaskListComponent implements OnInit{
   public deleteTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public completeTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public display: string = 'all';
+  public allAllTasks: Task[][] = [this.allTasks, this.completedTasks, this.activeTasks];
+  public description: String = '';
 
   constructor(private taskService: TaskService) {}
 
@@ -33,6 +33,7 @@ export class TaskListComponent implements OnInit{
       (response: Task[]) => {
         this.allTasks = response;
         this.fillCategories();
+        this.allAllTasks = [this.allTasks, this.completedTasks, this.activeTasks];
       }, 
       (error: HttpErrorResponse) =>  {
         alert(error.message);
@@ -119,5 +120,22 @@ export class TaskListComponent implements OnInit{
         activeIndex++;
       }
     }
+  }
+
+  public chooseDisplay(): number {
+      switch(this.display) {
+        case 'all':
+          return 0;
+        case 'completed':
+          return 1;
+        case 'active':
+          return 2;
+        default:
+          return -1;
+      }
+  }
+
+  public setDescription(description: String): void {
+    this.description = description;
   }
 }
