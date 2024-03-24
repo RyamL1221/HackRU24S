@@ -29,7 +29,7 @@ public class TaskService {
         return taskRepo.findAll();
     }
 
-    public Task updateTask(Task task) {
+    public Task editTask(Task task) {
         return taskRepo.save(task);
     }
 

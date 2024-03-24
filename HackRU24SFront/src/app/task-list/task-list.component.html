@@ -22,7 +22,7 @@
         </div>
         <div class="col-2"></div>
       </div>
-      <div class="add text-center mt-3">
+      <div class="add text-center mt-3" data-bs-toggle="modal" data-bs-target="#addTaskModal">
         <b>Add Task</b>
       </div>
       <table class="tasks-table mt-3">
@@ -35,6 +35,79 @@
           <td class="task-border edit px-2 pt-1"><b>edit✎</b></td>
           <td class="task-border delete px-2 pt-1"><b>delete✘</b></td>
         </tr>
+        <tr class="task" *ngFor="let task of allTasks">
+            <td class="px-2 pt-1 task-border check">
+                <mat-checkbox></mat-checkbox>
+            <td class="px-2 pt-1 task-border time"><b>{{task?.time}}</b></td>
+            <td class="px-2 pt-1 task-border text"><b>{{task?.name}}</b></td>
+            <td class="px-2 pt-1 task-border description">{{task?.description}}</td>
+            <td class="task-border edit px-2 pt-1" (click)="onOpenEditModal(task)" (click)="onEditTask(task)"><b>edit✎</b></td>
+            <td class="task-border delete px-2 pt-1"><b>delete✘</b></td>
+        </tr>
       </table>
     </div>
   </body>
+
+<!-- Add Task Modal -->
+<div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form #addForm="ngForm" (ngSubmit)="onAddTask(addForm)">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input class="form-control" name="name" required [(ngModel)]="addTask.name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input class="form-control" name="description" required [(ngModel)]="addTask.description">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Time</label>
+                        <input class="form-control" name="time" required [(ngModel)]="addTask.time">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="add-task-form" [disabled]="addForm.invalid" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </form>              
+        </div>
+    </div>
+</div>
+
+<!-- Edit Task Modal-->
+<div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit {{editTask.name}} Task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form #editForm="ngForm" (ngSubmit)="onEditTask(editTask)">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input class="form-control" name="name" required [(ngModel)]="editTask.name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input class="form-control" name="description" required [(ngModel)]="editTask.description">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Time</label>
+                        <input class="form-control" name="time" required [(ngModel)]="editTask.time">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="add-task-form" [disabled]="editForm.invalid" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </form>              
+        </div>
+    </div>
+</div>
