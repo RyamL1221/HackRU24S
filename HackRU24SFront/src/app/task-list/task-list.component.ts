@@ -14,14 +14,17 @@ import { NgIf } from '@angular/common';
 export class TaskListComponent implements OnInit{
 
   public allTasks: Task[] = [];
+  public completedTasks: Task[] = [];
+  public activeTasks: Task[] = [];
   public addTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public editTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public deleteTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public completeTask: Task = {id: "", name: "", description: "", time: "", completed: false};
+  public display: string = 'all';
 
   constructor(private taskService: TaskService) {}
 
-  ngOnInit() {
+  ngOnInit() { // this runs on initialization
     this.getTasks();
   }
 
@@ -34,6 +37,17 @@ export class TaskListComponent implements OnInit{
         alert(error.message);
       }
     )
+    let activeIndex = 0;
+    let completedIndex = 0;
+    for(let i = 0; i < this.allTasks.length; i++) {
+      if(this.allTasks[i].completed) {
+        this.completedTasks[completedIndex] = this.allTasks[i];
+        completedIndex++;
+      } else {
+        this.activeTasks[activeIndex] = this.allTasks[i];
+        activeIndex++;
+      }
+    }
   }
 
   public onAddTask(addForm: NgForm): void {
@@ -98,4 +112,9 @@ export class TaskListComponent implements OnInit{
     this.completeTask.completed = !task.completed;
     this.onEditTask(this.completeTask);
   }
+
+  public setDisplay(display: string): void {
+    this.display = display;
+  }
+
 }
