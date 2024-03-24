@@ -23,3 +23,14 @@ body {
   text-align: left;
   color: #9d0229;
 }
+.foot{
+  color: #ffffff;
+  padding-top: 10px;
+  background-color: #e20039;
+  width: 100%;
+  margin-top: 15px;
+}
+.gitimage{
+  width: 40px;
+}
+
