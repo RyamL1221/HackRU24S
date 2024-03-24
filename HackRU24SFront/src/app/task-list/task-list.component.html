@@ -50,48 +50,18 @@
         <td class="task-border edit px-2 pt-1"><b>edit✎</b></td>
         <td class="task-border delete px-2 pt-1"><b>delete✘</b></td>
     </tr>
-    <ng-container *ngIf="display === 'all'">
-        <tr class="task" *ngFor="let task of allTasks">
-            <td class="px-2 pt-1 task-border check" (click)="completeSwitch(task)">
-                <mat-checkbox *ngIf="!task.completed"></mat-checkbox>
-                <div *ngIf="task.completed" style="text-align: center;">
-                    <img src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png" style="height: 20px; width: 20px;">
-                </div>
-            <td class="px-2 pt-1 task-border time"><b>{{task?.time}}</b></td>
-            <td class="px-2 pt-1 task-border text"><b>{{task?.name}}</b></td>
-            <td class="px-2 pt-1 task-border description">{{task?.description}}</td>
-            <td class="task-border edit px-2 pt-1" (click)="onOpenEditModal(task)" data-bs-toggle="modal" data-bs-target="#editTaskModal"><b >edit✎</b></td>
-            <td class="task-border delete px-2 pt-1" (click)="onOpenDeleteModal(task)" data-bs-toggle="modal" data-bs-target="#deleteTaskModal"><b>delete✘</b></td>
+        <tr class="task" *ngFor="let task of allAllTasks[chooseDisplay()]">
+        <td class="px-2 pt-1 task-border check" (click)="completeSwitch(task)">
+            <mat-checkbox *ngIf="!task.completed"></mat-checkbox>
+            <div *ngIf="task.completed" style="text-align: center;">
+                <img src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png" style="height: 20px; width: 20px;">
+            </div>
+        <td class="px-2 pt-1 task-border time"><b>{{task?.time}}</b></td>
+        <td class="px-2 pt-1 task-border text"><b>{{task?.name}}</b></td>
+        <td class="px-2 pt-1 task-border description">{{task?.description}}</td>
+        <td class="task-border edit px-2 pt-1" (click)="onOpenEditModal(task)" data-bs-toggle="modal" data-bs-target="#editTaskModal"><b >edit✎</b></td>
+        <td class="task-border delete px-2 pt-1" (click)="onOpenDeleteModal(task)" data-bs-toggle="modal" data-bs-target="#deleteTaskModal"><b>delete✘</b></td>
         </tr>
-    </ng-container>
-    <ng-container *ngIf="display === 'active'">
-        <tr class="task" *ngFor="let task of activeTasks">
-            <td class="px-2 pt-1 task-border check" (click)="completeSwitch(task)">
-                <mat-checkbox *ngIf="!task.completed"></mat-checkbox>
-                <div *ngIf="task.completed" style="text-align: center;">
-                    <img src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png" style="height: 20px; width: 20px;">
-                </div>
-            <td class="px-2 pt-1 task-border time"><b>{{task?.time}}</b></td>
-            <td class="px-2 pt-1 task-border text"><b>{{task?.name}}</b></td>
-            <td class="px-2 pt-1 task-border description">{{task?.description}}</td>
-            <td class="task-border edit px-2 pt-1" (click)="onOpenEditModal(task)" data-bs-toggle="modal" data-bs-target="#editTaskModal"><b >edit✎</b></td>
-            <td class="task-border delete px-2 pt-1" (click)="onOpenDeleteModal(task)" data-bs-toggle="modal" data-bs-target="#deleteTaskModal"><b>delete✘</b></td>
-        </tr>
-    </ng-container>
-    <ng-container *ngIf="display === 'completed'">
-        <tr class="task" *ngFor="let task of completedTasks">
-            <td class="px-2 pt-1 task-border check" (click)="completeSwitch(task)">
-                <mat-checkbox *ngIf="!task.completed"></mat-checkbox>
-                <div *ngIf="task.completed" style="text-align: center;">
-                    <img src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png" style="height: 20px; width: 20px;">
-                </div>
-            <td class="px-2 pt-1 task-border time"><b>{{task?.time}}</b></td>
-            <td class="px-2 pt-1 task-border text"><b>{{task?.name}}</b></td>
-            <td class="px-2 pt-1 task-border description">{{task?.description}}</td>
-            <td class="task-border edit px-2 pt-1" (click)="onOpenEditModal(task)" data-bs-toggle="modal" data-bs-target="#editTaskModal"><b >edit✎</b></td>
-            <td class="task-border delete px-2 pt-1" (click)="onOpenDeleteModal(task)" data-bs-toggle="modal" data-bs-target="#deleteTaskModal"><b>delete✘</b></td>
-        </tr>
-    </ng-container>
     </table>
 </div>
 

@@ -21,6 +21,7 @@ export class TaskListComponent implements OnInit{
   public deleteTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public completeTask: Task = {id: "", name: "", description: "", time: "", completed: false};
   public display: string = 'all';
+  public allAllTasks: Task[][] = [this.allTasks, this.completedTasks, this.activeTasks];
 
   constructor(private taskService: TaskService) {}
 
@@ -33,6 +34,7 @@ export class TaskListComponent implements OnInit{
       (response: Task[]) => {
         this.allTasks = response;
         this.fillCategories();
+        this.allAllTasks = [this.allTasks, this.completedTasks, this.activeTasks];
       }, 
       (error: HttpErrorResponse) =>  {
         alert(error.message);
@@ -119,5 +121,18 @@ export class TaskListComponent implements OnInit{
         activeIndex++;
       }
     }
+  }
+
+  public chooseDisplay(): number {
+      switch(this.display) {
+        case 'all':
+          return 0;
+        case 'completed':
+          return 1;
+        case 'active':
+          return 2;
+        default:
+          return -1;
+      }
   }
 }
