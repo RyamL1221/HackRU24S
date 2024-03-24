@@ -26,28 +26,19 @@ export class TaskListComponent implements OnInit{
 
   ngOnInit() { // this runs on initialization
     this.getTasks();
+    this.fillCategories();
   }
 
   public getTasks(): void {
     this.taskService.getTasks().subscribe(
       (response: Task[]) => {
         this.allTasks = response;
+        this.fillCategories();
       }, 
       (error: HttpErrorResponse) =>  {
         alert(error.message);
       }
     )
-    let activeIndex = 0;
-    let completedIndex = 0;
-    for(let i = 0; i < this.allTasks.length; i++) {
-      if(this.allTasks[i].completed) {
-        this.completedTasks[completedIndex] = this.allTasks[i];
-        completedIndex++;
-      } else {
-        this.activeTasks[activeIndex] = this.allTasks[i];
-        activeIndex++;
-      }
-    }
   }
 
   public onAddTask(addForm: NgForm): void {
@@ -117,4 +108,17 @@ export class TaskListComponent implements OnInit{
     this.display = display;
   }
 
+  public fillCategories(): void {
+    let activeIndex = 0;
+    let completedIndex = 0;
+    for(let i = 0; i < this.allTasks.length; i++) {
+      if(this.allTasks[i].completed) {
+        this.completedTasks[completedIndex] = this.allTasks[i];
+        completedIndex++;
+      } else {
+        this.activeTasks[activeIndex] = this.allTasks[i];
+        activeIndex++;
+      }
+    }
+  }
 }
