@@ -9,6 +9,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormField, MatHint, MatLabel } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     NoopAnimationsModule,
     HttpClientModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

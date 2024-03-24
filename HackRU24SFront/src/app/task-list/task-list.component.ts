@@ -3,13 +3,11 @@ import { TaskService } from './task.service';
 import { Task } from './task';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule, NgForm } from '@angular/forms';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit{
 
